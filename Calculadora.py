@@ -15,7 +15,21 @@ def divisao(num1, num2):
         raise ValueError("Divisão por zero não é permitida.")
     return num1 / num2
 
+def porcentagem(num, perc):
+    return (perc / 100) * num
 
+def raiz_quadrada(num):
+    if num < 0:
+        raise ValueError("Raiz quadrada de número negativo não é permitida.")
+    return math.sqrt(num)  
+
+def media(*args):
+    if len(args) == 0:
+        raise ValueError("Pelo menos um número deve ser fornecido para calcular a média.")
+    return sum(args) / len(args)
+
+def exponenciacao(base, expoente):
+    return base ** expoente
 
 print("Calculadora")
 print("Escolha uma operação:")
@@ -54,6 +68,30 @@ if escolha == "4":
         print("Resultado:", divisao(num1, num2))
     except ValueError as e:
         print("Erro:", e)
-
+if escolha ==  "5":
+    print("Você escolheu Porcentagem")
+    num1 = float(input("Digite o número: "))
+    perc = float(input("Digite a porcentagem: "))
+    print("Resultado:", porcentagem(num1, perc))
+if escolha == "6":
+    print("Você escolheu Raiz Quadrada")
+    num = float(input("Digite o número: "))
+    if num < 0:
+        print("Erro: Raiz quadrada de número negativo não é permitida.")
+    else:
+        print("Resultado:", math.sqrt(num))
+if escolha == "7":
+    print("Você escolheu Média")
+    numeros = input("Digite os números separados por espaço: ")
+    numeros = [float(num) for num in numeros.split()]
+    try:
+        print("Resultado:", media(*numeros))
+    except ValueError as e:
+        print("Erro:", e)
+if escolha == "8":
+    print("Você escolheu Exponenciação")
+    base = float(input("Digite a base: "))
+    expoente = float(input("Digite o expoente: "))
+    print("Resultado:", exponenciacao(base, expoente))
 if escolha == "9":
     print("Saindo...")
